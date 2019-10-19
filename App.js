@@ -1,67 +1,40 @@
 import React, { Component } from "react";
-import { Text, View, SafeAreaView, Button } from "react-native";
-import styles from "./constants/styles";
+import { Text, View, SafeAreaView, Platform, Button } from "react-native";
 
 export default class App extends Component {
+  //arrow function
+  //  MyName = (name) => name
+
+  //  MyName(name){
+  //    return name
+  //  }
+
   state = {
-    name: "ali haider",
-    age: 21
+    counter: 300,
+    name: "ali"
   };
 
-  // arrow function
-  clickme = () => {
-    // alert("you pressesd click me");
-    this.setState({ age: this.state.age + 1 });
+  myAlert = () => alert("my name is ali haider");
+
+  counter = () => {
+    this.setState({
+      counter: this.state.counter + 1
+    });
+
+    // this.state.counter = 400
   };
 
   render() {
     return (
-      <SafeAreaView style={[styles.safeArea, { width: "100%", flex: 1 }]}>
-        <View
-          style={{
-            width: "100%",
-            height: 50,
-            flexDirection: "row",
-            backgroundColor: "green"
-          }}
-        >
-          <View style={{ width: "20%", justifyContent: "center", height: 50 }}>
-            <Text style={{ marginLeft: 10 }}>ali</Text>
-          </View>
-          <View
-            style={{
-              width: "60%",
-              height: 50,
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <Text>Search</Text>
-          </View>
-          <View
-            style={{
-              width: "20%",
-              justifyContent: "center",
-              height: 50,
-              alignItems: "flex-end"
-            }}
-          >
-            <Text style={{ marginRight: 10 }}>ali</Text>
-          </View>
+      <SafeAreaView
+        style={{ width: "100%", marginTop: Platform.OS == "android" ? 25 : 0 }}
+      >
+        <Text> textInComponent </Text>
+        <Text>hello this is MAD clas</Text>
+        <View style={{ marginTop: 30, width: 100 }}>
+          <Button title="click me" color="red" onPress={() => this.counter()} />
         </View>
-
-        <View style={{ marginTop: 20, width: "100%", alignItems: "center" }}>
-          <Button
-            color="green"
-            title="click me"
-            onPress={() => this.clickme()}
-          />
-        </View>
-        <View style={{ marginTop: 20, width: "100%", alignItems: "center" }}>
-          <Text style={{ color: "red", fontSize: 25, fontWeight: "bold" }}>
-            {this.state.age}
-          </Text>
-        </View>
+        <Text style={{ fontSize: 25 }}>{this.state.counter}</Text>
       </SafeAreaView>
     );
   }
