@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Text, View, SafeAreaView, Platform, Button } from "react-native";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  Platform,
+  TouchableOpacity
+} from "react-native";
+import ButtonComponent from "./Button";
+import MyName from "./MyName";
 
 export default class App extends Component {
   //arrow function
@@ -32,9 +40,29 @@ export default class App extends Component {
         <Text> textInComponent </Text>
         <Text>hello this is MAD clas</Text>
         <View style={{ marginTop: 30, width: 100 }}>
-          <Button title="click me" color="red" onPress={() => this.counter()} />
+          {/* <Button title="click me" color="red" onPress={() => this.counter()} /> */}
         </View>
         <Text style={{ fontSize: 25 }}>{this.state.counter}</Text>
+
+        <TouchableOpacity onPress={() => alert("hello ali")}>
+          <View
+            style={{
+              width: 100,
+              height: 50,
+              backgroundColor: "green",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: 10
+            }}
+          >
+            <Text>click me</Text>
+          </View>
+        </TouchableOpacity>
+
+        <ButtonComponent />
+        <View style={{ marginTop: 30 }}>
+          <MyName name={this.state.name} color="red" />
+        </View>
       </SafeAreaView>
     );
   }
