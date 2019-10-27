@@ -4,10 +4,11 @@ import {
   View,
   SafeAreaView,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from "react-native";
-import ButtonComponent from "./Button";
-import MyName from "./MyName";
+import ButtonComponent from "./src/components/ButtonComponent";
+import Counter from "./src/components/Counter";
 
 export default class App extends Component {
   //arrow function
@@ -44,25 +45,11 @@ export default class App extends Component {
         </View>
         <Text style={{ fontSize: 25 }}>{this.state.counter}</Text>
 
-        <TouchableOpacity onPress={() => alert("hello ali")}>
-          <View
-            style={{
-              width: 100,
-              height: 50,
-              backgroundColor: "green",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 10
-            }}
-          >
-            <Text>click me</Text>
-          </View>
-        </TouchableOpacity>
-
-        <ButtonComponent />
-        <View style={{ marginTop: 30 }}>
-          <MyName name={this.state.name} color="red" />
+        <View style={{ width: "100%", alignItems: "center" }}>
+          <ButtonComponent name="Moiz" color="aqua" />
         </View>
+
+        <Counter name="Ali" />
       </SafeAreaView>
     );
   }
