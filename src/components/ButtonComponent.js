@@ -1,7 +1,7 @@
 import { TouchableOpacity, View, Text } from "react-native";
 import React from "react";
 
-const ButtonComponent = props => {
+export const ButtonComponent = props => {
   return (
     <TouchableOpacity onPress={() => alert("i am button")}>
       <View
@@ -21,4 +21,6 @@ const ButtonComponent = props => {
   );
 };
 
-export default ButtonComponent;
+export const Myname = () => {
+  return <Text>I am ali</Text>;
+};
