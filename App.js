@@ -6,28 +6,23 @@ import {
   Platform,
   TouchableOpacity,
   Button,
-  Image,
   ScrollView
 } from "react-native";
-import { ButtonComponent, Myname } from "./src/components/ButtonComponent";
-import Counter from "./src/components/Counter";
-import MyName from "./Name";
-import {
-  IslamabadDetails,
-  KarachiDetails,
-  LahoreDetails,
-  QuettaDetails
-} from "./src/screens/Detail";
+import { ImageComponent, TextComponent } from "./src/screens/Image";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import MyHome from "./src/screens/Home";
 
 const Stack = createStackNavigator(
   {
     Home: {
-      screen: IslamabadDetails
+      screen: MyHome
+    },
+    Detail: {
+      screen: ImageComponent
     },
     About: {
-      screen: KarachiDetails
+      screen: TextComponent
     }
   },
   {
@@ -35,7 +30,7 @@ const Stack = createStackNavigator(
   }
 );
 
-const MainStack = createAppContainer(Stack);
+const MainNav = createAppContainer(Stack);
 
 export default class App extends Component {
   //arrow function
@@ -72,7 +67,7 @@ export default class App extends Component {
         {/* <Text> textInComponent </Text>
         <Text>hello this is MAD clas</Text>
         <View style={{ marginTop: 30, width: 100 }}>
-          {/* <Button title="click me" color="red" onPress={() => this.counter()} /> 
+          <Button title="click me" color="red" onPress={() => this.counter()} />
         </View>
         <Text style={{ fontSize: 25 }}>{this.state.counter}</Text>
 
@@ -100,21 +95,19 @@ export default class App extends Component {
         <View style={{ marginTop: 50 }}>
           <Myname name="Waseem sabir" age={21} />
         </View>
+
         <Image
+          style={{ width: "100%", height: 200 }}
           source={{
             uri:
-              "https://cdn.pixabay.com/photo/2018/08/27/02/53/pakistan-3633931_1280.jpg"
+              "https://cdn.pixabay.com/photo/2019/10/23/16/23/horse-4572080_1280.jpg"
           }}
-          style={{ marginTop: 20, width: "100%", height: 200 }}
         /> */}
-        {/* <ScrollView style={{ width: "100%", flex: 1 }}>
-          <IslamabadDetails />
-          <LahoreDetails />
-          <KarachiDetails />
-          <QuettaDetails />
+        {/* <ScrollView>
+          <ImageComponent />
+          <TextComponent />
         </ScrollView> */}
-
-        <MainStack />
+        <MainNav />
       </SafeAreaView>
     );
   }
