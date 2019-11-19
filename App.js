@@ -6,23 +6,75 @@ import {
   Platform,
   TouchableOpacity,
   Button,
+  Image,
   ScrollView
 } from "react-native";
 import { ImageComponent, TextComponent } from "./src/screens/Image";
+import MyHome from "./src/screens/Home";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import MyHome from "./src/screens/Home";
+import { createDrawerNavigator } from "react-navigation-drawer";
+
+class Home extends Component {
+  render() {
+    return (
+      <View>
+        
+        <Text style={{ fontSize: 30, marginTop: 50 }}>My home</Text>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("MyAbout")}
+        >
+          <Text>go to about</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()}>
+          <Text>open drawer</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+class About extends Component {
+  render() {
+    return (
+      <View>
+        <Text style={{ fontSize: 30, marginTop: 50 }}>I am in About</Text>
+        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <Text>go back</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+class Login extends Component {
+  render() {
+    return (
+      <View>
+        <Text style={{ fontSize: 30, marginTop: 50 }}>I am in Login</Text>
+        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <Text>go back</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+const AuthScreen = createStackNavigator({
+  Login: {
+    screen: Login
+  }
+});
+
+const Authnav = createAppContainer(AuthScreen);
 
 const Stack = createStackNavigator(
   {
-    Home: {
-      screen: MyHome
+    MyHome: {
+      screen: Home
     },
-    Detail: {
-      screen: ImageComponent
-    },
-    About: {
-      screen: TextComponent
+    MyAbout: {
+      screen: About
     }
   },
   {
@@ -30,7 +82,18 @@ const Stack = createStackNavigator(
   }
 );
 
-const MainNav = createAppContainer(Stack);
+const Stacknav = createAppContainer(Stack);
+
+const Drawer = createDrawerNavigator({
+  Dashboard: {
+    screen: Stacknav
+  },
+  AuthScreen: {
+    screen: Authnav
+  }
+});
+
+const MainNav = createAppContainer(Drawer);
 
 export default class App extends Component {
   //arrow function
@@ -64,49 +127,6 @@ export default class App extends Component {
           marginTop: Platform.OS == "android" ? 25 : 0
         }}
       >
-        {/* <Text> textInComponent </Text>
-        <Text>hello this is MAD clas</Text>
-        <View style={{ marginTop: 30, width: 100 }}>
-          <Button title="click me" color="red" onPress={() => this.counter()} />
-        </View>
-        <Text style={{ fontSize: 25 }}>{this.state.counter}</Text>
-
-        <View style={{ width: "100%", alignItems: "center" }}>
-          <ButtonComponent name="Moiz" color="green" />
-          <Myname />
-        </View>
-
-        <TouchableOpacity>
-          <View
-            style={{
-              width: 100,
-              height: 50,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "green",
-              borderRadius: 10
-            }}
-          >
-            <Text>New Button</Text>
-          </View>
-        </TouchableOpacity>
-        <Counter name="Ali" />
-
-        <View style={{ marginTop: 50 }}>
-          <Myname name="Waseem sabir" age={21} />
-        </View>
-
-        <Image
-          style={{ width: "100%", height: 200 }}
-          source={{
-            uri:
-              "https://cdn.pixabay.com/photo/2019/10/23/16/23/horse-4572080_1280.jpg"
-          }}
-        /> */}
-        {/* <ScrollView>
-          <ImageComponent />
-          <TextComponent />
-        </ScrollView> */}
         <MainNav />
       </SafeAreaView>
     );

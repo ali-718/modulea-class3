@@ -24,9 +24,9 @@ export default class Home extends Component {
           </Text>
           {console.log(this.props)}
           <Button
-            title="click me to change"
+            title="page change"
             onPress={() => {
-              this.props.navigation.navigate("Detail");
+              this.props.navigation.navigate("About");
             }}
           />
         </View>

@@ -3,7 +3,7 @@ import { Text, View, Image, StatusBar, Button } from "react-native";
 import Islamabad from "../assets/images/islamab.jpg";
 import Pakistan from "../assets/images/pakistan.jpg";
 
-export class IslamabadDetails extends Component {
+export default class IslamabadDetails extends Component {
   render() {
     return (
       <View style={{ marginTop: StatusBar.currentHeight }}>

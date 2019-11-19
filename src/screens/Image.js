@@ -24,13 +24,7 @@ export class ImageComponent extends Component {
           </Text>
         </View>
         <Button
-          title="click me to go back"
-          onPress={() => {
-            this.props.navigation.goBack();
-          }}
-        />
-        <Button
-          title="click me to go about"
+          title="change page"
           onPress={() => {
             this.props.navigation.navigate("About");
           }}
